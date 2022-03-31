@@ -12,8 +12,13 @@ app.get("/", (req, res) => {
   res.status(200).send("Hello world!");
 });
 
-app.listen(process.env.PORT, () => {
+const server = app.listen(process.env.PORT, () => {
   console.log(
     `${process.env.PROJECT_NAME} running at http://localhost:${process.env.PORT}`
   );
+});
+
+process.on("SIGINT", () => {
+  server.close();
+  console.log(`${process.env.PROJECT_NAME} is shuting down...`);
 });
