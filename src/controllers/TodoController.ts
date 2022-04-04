@@ -39,7 +39,7 @@ class TodoController {
 
     const success = await TodoModel.destroy({ where: { id: id } });
 
-    return success ? res.sendStatus(204) : res.sendStatus(404);
+    return success[0] ? res.sendStatus(204) : res.sendStatus(404);
   }
 }
 
