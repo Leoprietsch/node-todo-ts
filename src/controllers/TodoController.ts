@@ -31,7 +31,7 @@ class TodoController {
 
     const success = await TodoModel.update(req.body, { where: { id: id } });
 
-    return success ? res.sendStatus(204) : res.sendStatus(404);
+    return success[0] ? res.sendStatus(204) : res.sendStatus(404);
   }
 
   async delete(req: Request, res: Response) {
